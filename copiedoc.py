@@ -9,7 +9,7 @@ from src.config import CopieConfig
 
 
 ini_filename = 'profils.ini'
-# le fichier est dans le même répertoire que la gui
+# le fichier "ini" est dans le même répertoire que la gui
 ini_filename = os.path.join(os.path.abspath(os.path.dirname(__file__)), ini_filename)
 copie_config = CopieConfig(ini_filename)
 
@@ -27,6 +27,8 @@ mainframe.rowconfigure(3, weight=2)
 # files selection
 all_files_selection = []
 all_files_selection_var = StringVar()
+# dossier du chemin courant de la/les sélections
+current_directory = ''
 
 # liste des profils
 all_profils_var = StringVar(value=copie_config.all_sections())
@@ -46,6 +48,9 @@ def files_selection(initialdir=''):
     global all_files_selection
     all_files_selection = all_files
     all_files_selection_var.set(all_files)
+    global current_directory
+    if len(all_files_selection) != 0:
+        current_directory = os.path.dirname(all_files_selection[0])
     if is_OK_copie():
         copie_btn['state'] = 'normal'
 
@@ -119,7 +124,7 @@ def copie():
 
 
 source_lbl = ttk.Label(mainframe, text="source")
-fichiers_btn = ttk.Button(mainframe, text="Choisir...", command=files_selection)
+fichiers_btn = ttk.Button(mainframe, text="Choisir...", command=lambda: files_selection(current_directory))
 Tooltip(fichiers_btn, text='Choisir les fichiers à copier')
 fichiers_lst = Listbox(mainframe, height=5, listvariable=all_files_selection_var)
 
