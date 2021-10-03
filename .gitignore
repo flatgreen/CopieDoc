@@ -1,0 +1,4 @@
+doc/pandoc.txt
+doc/profils_trav
+src/__pycache__/
+venv/
