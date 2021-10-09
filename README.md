@@ -26,7 +26,7 @@ python3 copiedoc.py
 
 Avec windows, clic-droit sur le script, choisir "ouvrir avec...", puis choisir "python.exe" ou "pythonw.exe" (en général dans "c:\\python3.*").
 
-![copiedoc gui](doc/gui_doc2.jpg "l'interface de copiedoc.py"){ width=284px }
+![copiedoc gui](doc/gui_doc.jpg "l'interface de copiedoc.py")
 
 Dans l'interface graphique :
 
