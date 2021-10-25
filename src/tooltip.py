@@ -28,6 +28,9 @@ class Tooltip:
           wraplength on creation
       by Alberto Vassena on 2016.11.05.
 
+      - Modified
+        - add 'set_text()' to dynamically add some text
+
       Tested on Ubuntu 16.04/16.10, running Python 3.5.2
 
     TODO: themes styles support
@@ -152,6 +155,9 @@ class Tooltip:
         if tw:
             tw.destroy()
         self.tw = None
+
+    def set_text(self, new_text):
+        self.text=new_text
 
 
 if __name__ == '__main__':
