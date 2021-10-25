@@ -89,7 +89,6 @@ class CopieDoc:
 
         self.profils_lst.bind("<<ListboxSelect>>", self.chemin_profil)
 
-
     def files_selection(self, initialdir=''):
         if initialdir == '':
             initialdir = Path.home()
@@ -102,7 +101,6 @@ class CopieDoc:
             self.current_directory = os.path.dirname(all_files[0])
         if self.is_OK_copie():
             self.copie_btn['state'] = 'normal'
-
 
     def directory_selection(self, initialdir=''):
         if initialdir == '':
@@ -118,12 +116,10 @@ class CopieDoc:
         if self.is_OK_copie():
             self.copie_btn['state'] = 'normal'
 
-
     def add_new_directory_to_profil_path(self, path_from_profil, new_directory):
         new_path = Path(path_from_profil) / new_directory
         os.makedirs(str(new_path), exist_ok=True)
         return str(new_path)
-
 
     def chemin_profil(self, *args):
         curselect = self.profils_lst.curselection()
@@ -145,12 +141,10 @@ class CopieDoc:
                 self.message_lbl.configure(foreground='red')
                 self.message_var.set('profil : ' + self.all_profils[curselect[0]] + ' ==> problème de chemins')
 
-
     def is_OK_copie(self):
         nb_fichiers = len(self.all_files_selection)
         item_select_profil = self.profils_lst.curselection()
         return True if (nb_fichiers != 0 and len(item_select_profil) == 1) else False
-
 
     def copie(self):
         # list chemins destination
